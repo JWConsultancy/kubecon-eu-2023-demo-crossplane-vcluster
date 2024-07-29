@@ -4,4 +4,13 @@ metadata:
   name: customer1
 spec:
   argocd:
-    values: {}
+    values: 
+      ingress:
+        enabled: true
+        annotations: 
+          cert-manager.io/cluster-issuer: letsencrypt-production-issuer
+        ingressClassName: "nginx"
+        hostname: "argo-cd-customer1.joseph.wien"
+        path: /
+        pathType: Prefix
+        tls: true
